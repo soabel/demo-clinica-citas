@@ -15,6 +15,11 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
+    public List<Doctor> findByName(String nombre) {
+        return this.doctorRepository.find(nombre);
+    }
+
+    @Override
     public List<Doctor> findAll() {
         return this.doctorRepository.findAll();
     }

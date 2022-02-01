@@ -27,6 +27,12 @@ public class DoctorController {
         return this.doctorService.findById(id);
     }
 
+    @GetMapping("/buscar")
+    public List<Doctor> findByName(@RequestParam("nombre") String nombre){
+        System.out.println("nombre = " + nombre);
+        return this.doctorService.findByName(nombre);
+    }
+
     @PostMapping
     public Doctor save(@RequestBody Doctor doctor){
         return this.doctorService.save(doctor);
