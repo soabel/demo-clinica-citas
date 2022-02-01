@@ -9,5 +9,6 @@ public interface DoctorService {
      List<Doctor> findAll();
      Doctor findById(Long id);
      Doctor save(Doctor doctor);
+     Doctor updateEspecialidad(Long id, String especialidad);
      void delete(Long id);
 }

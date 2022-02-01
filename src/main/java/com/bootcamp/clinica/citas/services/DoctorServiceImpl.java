@@ -35,6 +35,13 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
+    public Doctor updateEspecialidad(Long id, String especialidad) {
+        var doctor = this.doctorRepository.findById(id).get();
+        doctor.setEspecialidad(especialidad);
+        return this.doctorRepository.save(doctor);
+    }
+
+    @Override
     public void delete(Long id) {
         this.doctorRepository.deleteById(id);
     }
