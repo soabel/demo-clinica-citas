@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("doctores")
+@RequestMapping("api/v1/doctores")
 public class DoctorController {
 
     private DoctorService doctorService;

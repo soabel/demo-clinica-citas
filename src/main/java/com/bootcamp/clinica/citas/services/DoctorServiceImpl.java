@@ -31,7 +31,7 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public Doctor save(Doctor doctor) {
-        return this.doctorRepository.saveAndFlush(doctor);
+        return this.doctorRepository.save(doctor);
     }
 
     @Override
