@@ -18,4 +18,19 @@ public class DoctorServiceImpl implements DoctorService {
     public List<Doctor> findAll() {
         return this.doctorRepository.findAll();
     }
+
+    @Override
+    public Doctor findById(Long id) {
+        return  this.doctorRepository.findById(id).get();
+    }
+
+    @Override
+    public Doctor save(Doctor doctor) {
+        return this.doctorRepository.saveAndFlush(doctor);
+    }
+
+    @Override
+    public void delete(Long id) {
+        this.doctorRepository.deleteById(id);
+    }
 }
