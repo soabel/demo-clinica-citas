@@ -2,6 +2,7 @@ package com.bootcamp.clinica.citas.controllers;
 
 import com.bootcamp.clinica.citas.entities.Doctor;
 import com.bootcamp.clinica.citas.services.DoctorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -11,11 +12,12 @@ import java.util.List;
 @RequestMapping("doctores")
 public class DoctorController {
 
+    @Autowired
     private DoctorService doctorService;
 
-    DoctorController(DoctorService doctorService){
-        this.doctorService= doctorService;
-    }
+//    DoctorController(DoctorService doctorService){
+//        this.doctorService= doctorService;
+//    }
 
     @GetMapping
     public List<Doctor> findAll(){

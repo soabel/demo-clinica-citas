@@ -9,4 +9,6 @@ import java.util.List;
 public interface CitaService {
     List<Cita> findAll();
     Cita save(Cita cita);
+
+    Cita findById(Long id);
 }

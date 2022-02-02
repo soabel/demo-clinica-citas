@@ -10,8 +10,8 @@ public class Cita {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     @Column(unique = true , nullable = false)
     private Long id;
+    @Column(name = "fechahora")
     private Date fechaHora;
-
     @ManyToOne()
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;

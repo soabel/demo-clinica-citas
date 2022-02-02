@@ -24,4 +24,9 @@ public class CitaSeviceImpl implements CitaService {
     public Cita save(Cita cita) {
         return this.citaRepository.save(cita);
     }
+
+    @Override
+    public Cita findById(Long id) {
+        return this.citaRepository.findById(id).get();
+    }
 }
