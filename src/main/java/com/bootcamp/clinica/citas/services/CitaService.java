@@ -11,4 +11,6 @@ public interface CitaService {
     Cita save(Cita cita);
 
     Cita findById(Long id);
+
+    Cita updateToAttendant(Long id, String diagnostico);
 }

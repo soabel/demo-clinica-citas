@@ -8,7 +8,7 @@ INSERT INTO doctor (nombre,numeroColegiatura,dni,edad,especialidad) VALUES ('Car
 INSERT INTO paciente (nombre,dni,edad) VALUES ('Alex','11111111',23);
 INSERT INTO paciente (nombre,dni,edad) VALUES ('Pedro','66666666',23);
 
-INSERT INTO cita (fechahora,doctor_id,paciente_id) VALUES ('2020-01-30T11:00',1,1);
+INSERT INTO cita (fechahora,doctor_id,paciente_id, estado) VALUES ('2020-01-30T11:00',1,1, 'programado');
 
 
 

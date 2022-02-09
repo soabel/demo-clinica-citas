@@ -32,4 +32,9 @@ public class CitaController {
         return this.citaService.save(doctor);
     }
 
+    @PatchMapping("/{id}/registrar-atencion")
+    public Cita updateCita(@PathVariable Long id, @RequestBody String diagnostico){
+        return this.citaService.updateToAttendant(id, diagnostico);
+    }
+
 }

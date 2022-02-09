@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name ="cita")
-public class Cita {
+@Table(name ="receta")
+public class Receta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     @Column(unique = true , nullable = false)
@@ -15,39 +15,12 @@ public class Cita {
     @ManyToOne()
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
-
     @ManyToOne()
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
-
-    private String estado;
-    private String diagnostico;
-
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getDiagnostico() {
-        return diagnostico;
-    }
-
-    public void setDiagnostico(String diagnostico) {
-        this.diagnostico = diagnostico;
-    }
-
-
-    public Date getFechaHora() {
-        return fechaHora;
-    }
-
-    public void setFechaHora(Date fechaHora) {
-        this.fechaHora = fechaHora;
-    }
+    @ManyToOne()
+    @JoinColumn(name = "cita_id")
+    private Cita cita;
 
     public Long getId() {
         return id;
@@ -57,6 +30,13 @@ public class Cita {
         this.id = id;
     }
 
+    public Date getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(Date fechaHora) {
+        this.fechaHora = fechaHora;
+    }
 
     public Doctor getDoctor() {
         return doctor;
@@ -72,5 +52,23 @@ public class Cita {
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
+    }
+
+    public Cita getCita() {
+        return cita;
+    }
+
+    public void setCita(Cita cita) {
+        this.cita = cita;
+    }
+
+    @Override
+    public String toString() {
+        return "Receta{" +
+                "id=" + id +
+                ", fechaHora=" + fechaHora +
+                ", doctor=" + doctor +
+                ", paciente=" + paciente +
+                '}';
     }
 }
