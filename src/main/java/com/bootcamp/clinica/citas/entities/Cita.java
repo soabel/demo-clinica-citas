@@ -1,7 +1,10 @@
 package com.bootcamp.clinica.citas.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name ="cita")
@@ -23,6 +26,8 @@ public class Cita {
     private String estado;
     private String diagnostico;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cita")
+    private List<Receta> recetas;
 
     public String getEstado() {
         return estado;
@@ -72,5 +77,13 @@ public class Cita {
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
+    }
+
+    public List<Receta> getRecetas() {
+        return recetas;
+    }
+
+    public void setRecetas(List<Receta> recetas) {
+        this.recetas = recetas;
     }
 }

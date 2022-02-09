@@ -1,7 +1,10 @@
 package com.bootcamp.clinica.citas.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name ="receta")
@@ -20,7 +23,11 @@ public class Receta {
     private Paciente paciente;
     @ManyToOne()
     @JoinColumn(name = "cita_id")
+    @JsonIgnoreProperties(value="recetas")
     private Cita cita;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receta")
+    private List<RecetaDetalle> detalle;
 
     public Long getId() {
         return id;
@@ -61,6 +68,15 @@ public class Receta {
     public void setCita(Cita cita) {
         this.cita = cita;
     }
+
+    public List<RecetaDetalle> getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(List<RecetaDetalle> detalle) {
+        this.detalle = detalle;
+    }
+
 
     @Override
     public String toString() {
