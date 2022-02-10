@@ -26,7 +26,7 @@ public class Cita {
     private String estado;
     private String diagnostico;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cita")
+    @OneToMany( mappedBy = "cita")
     private List<Receta> recetas;
 
     public String getEstado() {

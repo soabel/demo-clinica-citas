@@ -21,13 +21,15 @@ public class Receta {
     @ManyToOne()
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
+
     @ManyToOne()
     @JoinColumn(name = "cita_id")
     @JsonIgnoreProperties(value="recetas")
     private Cita cita;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receta")
+    @OneToMany( mappedBy = "receta")
     private List<RecetaDetalle> detalle;
+
 
     public Long getId() {
         return id;

@@ -15,8 +15,8 @@ public class RecetaDetalle {
     private Integer cantidad;
     private String indicaciones;
 
-    @ManyToOne
-    @JoinColumn(name = "receta_id", nullable = false, updatable = false)
+    @ManyToOne()
+    @JoinColumn(name = "receta_id")
     @JsonIgnoreProperties(value="detalle")
     private Receta receta;
 
