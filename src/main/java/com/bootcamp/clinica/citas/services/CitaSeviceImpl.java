@@ -7,11 +7,15 @@ import com.bootcamp.clinica.citas.entities.RecetaDetalle;
 import com.bootcamp.clinica.citas.repositories.CitaRepository;
 import com.bootcamp.clinica.citas.repositories.PacienteRepository;
 import com.bootcamp.clinica.citas.repositories.RecetaRepository;
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 public class CitaSeviceImpl implements CitaService {
@@ -24,7 +28,14 @@ public class CitaSeviceImpl implements CitaService {
 
     @Override
     public List<Cita> findAll() {
-        return this.citaRepository.findAll();
+
+        var data = this.citaRepository.findAll()
+                .stream()
+                .filter(x-> x.getEstado()=="programado");
+
+        var lista = data.collect(Collectors.toList());
+
+        return lista;
     }
 
     @Override
@@ -40,7 +51,14 @@ public class CitaSeviceImpl implements CitaService {
 
     @Override
     public Cita updateToAttendant(Long id, String diagnostico) {
-        var cita= this.citaRepository.findById(id).get();
+
+
+        var citaOptional= this.citaRepository.findById(id);
+
+        if(!citaOptional.isPresent())
+            throw new NoSuchElementException("");
+
+        var cita= citaOptional.get();
 
         cita.setEstado("atendido");
         cita.setDiagnostico(diagnostico);
@@ -62,6 +80,13 @@ public class CitaSeviceImpl implements CitaService {
         recetaDetalle.setIndicaciones("1 cada 8 horas");
         recetaDetalle.setId(0L);
         detalles.add(recetaDetalle);
+
+        var recetaDetalle1= new RecetaDetalle();
+        recetaDetalle1.setProducto("Paracetamol 1g");
+        recetaDetalle1.setCantidad(10);
+        recetaDetalle1.setIndicaciones("1 cada 12 horas");
+        recetaDetalle1.setId(0L);
+        detalles.add(recetaDetalle1);
 
         receta.setDetalle(detalles);
 

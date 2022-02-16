@@ -2,7 +2,9 @@ package com.bootcamp.clinica.citas.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class Cita {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     @Column(unique = true , nullable = false)
     private Long id;
+    @NotNull
     @Column(name = "fechahora")
     private Date fechaHora;
     @ManyToOne()
